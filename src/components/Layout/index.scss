@@ -1,0 +1,27 @@
+.layout{
+  display: flex;
+
+  .site-layout-sub-header-background{
+    height: 80px;
+    padding: 10px 40px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #FFF;
+    .avatar-box{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      line-height: initial;
+      .avatar{
+        width: 50px;
+        height: 50px;
+      }
+    }
+  }
+
+  .content{
+    flex: 1;
+    overflow-y: auto;
+  }
+}
