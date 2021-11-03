@@ -1,31 +1,31 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'
 
-import { Form, Input, Button } from 'antd';
+import { Form, Input, Button } from 'antd'
 
-import './index.scss';
-import { PropertySafetyTwoTone } from '@ant-design/icons';
+import './index.scss'
+import { PropertySafetyTwoTone } from '@ant-design/icons'
 
 const tailLayout = {
-  wrapperCol: { offset: 8, span: 16 }
-};
+  wrapperCol: { offset: 8, span: 16 },
+}
 
-const Login = (props:any) => {
-  const [ form ] = Form.useForm();
-  const [ left, setLeft ] = useState(false);
+const Login: React.FC<any> = (props: any) => {
+  const [ form ] = Form.useForm()
+  const [ left, setLeft ] = useState(false)
 
-  const leftChange = () => {
-    setLeft(!left);
-  };
+  const leftChange = (): any => {
+    setLeft(!left)
+  }
 
-  const onFinish = (values:any) => {
-    sessionStorage.setItem('token', 'true');
-    sessionStorage.setItem('name', values.username);
-    props.history.push('/');
-  };
+  const onFinish = (values: any): any => {
+    sessionStorage.setItem('token', 'true')
+    sessionStorage.setItem('name', values.username)
+    props.history.push('/')
+  }
 
-  const onFinishFailed = (errorInfo:any) => {
-    console.log('Failed:', errorInfo);
-  };
+  const onFinishFailed = (errorInfo: any): any => {
+    console.log('Failed:', errorInfo)
+  }
 
   return (
     <div className='login'>
@@ -58,7 +58,7 @@ const Login = (props:any) => {
               <Button type="primary" htmlType="submit" style={{ marginRight: 20 }}>
               登录
               </Button>
-              <Button htmlType="button" onClick={() => form.resetFields()}>
+              <Button htmlType="button" onClick={(): any => form.resetFields()}>
               重置
               </Button>
             </Form.Item>
@@ -68,6 +68,6 @@ const Login = (props:any) => {
         </div>
       </div>
     </div>
-  );
-};
-export default Login;
+  )
+}
+export default Login

@@ -1,27 +1,27 @@
-import * as React from 'react';
+import * as React from 'react'
 import {
   HashRouter as Router,
   Route,
   Switch,
-  Redirect
-} from 'react-router-dom';
-import Layout from '../components/Layout';
-import ROUTER from './router';
-import Login from './login/index';
+  Redirect,
+} from 'react-router-dom'
+import Layout from '../components/Layout'
+import ROUTER from './router'
+import Login from './login/index'
 
-function RouteWithSubRoutes(route) {
+const RouteWithSubRoutes: React.FC<any> = (route) => {
   return (
     <Route
       path={route.path}
-      render={(props) =>
+      render={(props: any): any =>
         // pass the sub-routes down to keep nesting
         <route.component {...props} routes={route.routes} />
       }
     />
-  );
+  )
 }
 
-export default () =>
+const App: React.FC<any> = () =>
   <Router>
     <Switch>
       <Route
@@ -36,4 +36,5 @@ export default () =>
       </Layout>
     </Switch>
   </Router>
-;
+
+export default App

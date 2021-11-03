@@ -3,17 +3,17 @@ module.exports = {
     mocha: true,
     commonjs: true,
     es6: true,
-    node: true
+    node: true,
   },
   parser: '@typescript-eslint/parser',
-  plugins: [ '@typescript-eslint' ],
-  extends: [ 'eslint:recommended', 'plugin:@typescript-eslint/recommended' ],
+  plugins: [ '@typescript-eslint', 'react' ],
+  extends: [ 'eslint:recommended', 'plugin:react/recommended', 'plugin:@typescript-eslint/recommended' ],
   parserOptions: {
     ecmaVersion: 6,
     sourceType: 'module',
     ecmaFeatures: {
-      modules: true
-    }
+      modules: true,
+    },
   },
   rules: {
     // 禁用行尾空格
@@ -28,7 +28,7 @@ module.exports = {
     // 禁止在循环中出现 await
     'no-await-in-loop': 'error',
     // 所有的console禁止使用
-    'no-console': [ 'error', { allow: [ 'warn' ] } ],
+    //'no-console': [ 'error', { allow: [ 'warn' ] } ],
     // 禁止不必要的括号
     'no-extra-parens': 'error',
     // 禁止不必要的分号
@@ -84,7 +84,7 @@ module.exports = {
     // 'brace-style': [ 'error', 'stroustrup' ],
     // camelcase: [ 'error', { ignoreDestructuring: true } ],
     // 数组和对象键值对最后一个逗号， never参数：不能带末尾的逗号, always参数：必须带末尾的逗号，always-multiline多行模式必须带逗号，单行模式不能带逗号
-    'comma-dangle': [ 'error', 'never' ],
+    'comma-dangle': [ 'error', 'always-multiline' ],
     // 强制在逗号周围使用空格
     // 'comma-spacing': [ 'error', { before: false, after: true } ],
     // 不检测新文件末尾是否有空行
@@ -144,67 +144,68 @@ module.exports = {
       'error', {
         multiline: {
           delimiter: 'semi',
-          requireLast: true
+          requireLast: true,
         },
         singleline: {
           delimiter: 'semi',
-          requireLast: true
+          requireLast: true,
         },
         overrides: {
           interface: {
             multiline: {
               delimiter: 'semi',
-              requireLast: true
-            }
-          }
-        }
-      }
+              requireLast: true,
+            },
+          },
+        },
+      },
     ],
     // 强制使用特定的方法签名语法。
     '@typescript-eslint/method-signature-style': 'error',
     // 对代码库中的所有内容实施命名约定, 遵循ESLint的camelcase约定加强代码库
     camelcase: 'off',
-    '@typescript-eslint/naming-convention': [
-      'error',
-      {
-        selector: 'default',
-        format: [ 'camelCase' ]
-      },
+    // '@typescript-eslint/naming-convention': [
+    //   'error',
+    //   {
+    //     selector: 'default',
+    //     format: [ 'camelCase' ]
+    //   },
 
-      {
-        selector: 'variable',
-        format: [ 'camelCase', 'UPPER_CASE' ]
-      },
-      {
-        selector: 'parameter',
-        format: [ 'camelCase' ],
-        leadingUnderscore: 'allow'
-      },
+    //   {
+    //     selector: 'variable',
+    //     format: [ 'camelCase', 'UPPER_CASE' ]
+    //   },
+    //   {
+    //     selector: 'parameter',
+    //     format: [ 'camelCase' ],
+    //     leadingUnderscore: 'allow'
+    //   },
 
-      {
-        selector: 'memberLike',
-        modifiers: [ 'private' ],
-        format: [ 'camelCase' ],
-        leadingUnderscore: 'require'
-      },
+    //   {
+    //     selector: 'memberLike',
+    //     modifiers: [ 'private' ],
+    //     format: [ 'camelCase' ],
+    //     leadingUnderscore: 'require'
+    //   },
 
-      {
-        selector: 'typeLike',
-        format: [ 'PascalCase' ]
-      }
-    ],
+    //   {
+    //     selector: 'typeLike',
+    //     format: [ 'PascalCase' ]
+    //   }
+    // ],
     // 禁止在可能造成混淆的位置进行非null断言
     '@typescript-eslint/no-confusing-non-null-assertion': 'error',
     // 禁止将删除运算符与计算出的键表达式一起使用
     // '@typescript-eslint/no-dynamic-delete': 'error',
     // 禁止将类用作名称空间
     '@typescript-eslint/no-extraneous-class': 'error',
+    '@typescript-eslint/no-var-requires': 'off',
     // 禁止调用 require()
-    '@typescript-eslint/no-require-imports': 'error',
+    '@typescript-eslint/no-require-imports': 'off',
     // 强制includes方法重于indexOf方法
     // '@typescript-eslint/prefer-includes': 0,
     // 在类型注释周围需要一致的间距
-    '@typescript-eslint/type-annotation-spacing': [ 'error', { before: false, after: false, overrides: { arrow: { before: true, after: true } } } ],
+    '@typescript-eslint/type-annotation-spacing': [ 'error', { before: false, after: true, overrides: { arrow: { before: true, after: true } } } ],
     // 强制在代码块中使用一致的大括号风格
     'brace-style': 'off', // 注意，您必须禁用基本规则，因为它会报告不正确的错误
     '@typescript-eslint/brace-style': [ 'error' ],
@@ -228,11 +229,11 @@ module.exports = {
     '@typescript-eslint/quotes': [ 'error', 'single' ],
     // 要求或禁止使用分号代替ASI
     semi: 'off',
-    '@typescript-eslint/semi': [ 'error', 'always' ],
+    '@typescript-eslint/semi': [ 'error', 'never' ],
 
     // 禁用所有文件的规则
     '@typescript-eslint/explicit-function-return-type': 'off',
-    '@typescript-eslint/explicit-member-accessibility': 'off'
+    //'@typescript-eslint/explicit-member-accessibility': 'off'
   },
   overrides: [
     {
@@ -242,8 +243,8 @@ module.exports = {
         // 在函数和类方法上需要显式的返回类型
         '@typescript-eslint/explicit-function-return-type': [ 'error' ],
         // 在类属性和方法上需要显式的可访问性修饰符
-        '@typescript-eslint/explicit-member-accessibility': [ 'error' ]
-      }
-    }
-  ]
-};
+        '@typescript-eslint/explicit-member-accessibility': [ 'error' ],
+      },
+    },
+  ],
+}

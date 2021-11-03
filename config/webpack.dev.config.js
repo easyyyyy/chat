@@ -6,16 +6,14 @@ const {
   plugins,
   resolve,
 } = require('./webpack.base.config')
-const path = require('path');
+const path = require('path')
 const webpack = require('webpack')
-const ProgressBarPlugin = require('progress-bar-webpack-plugin');
+const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin') // 生成动态title
 const {CleanWebpackPlugin} = require('clean-webpack-plugin') // 每次打包前清除dist文件,重新生成
-const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin'); // 命令行提示
-const DefinePlugin = require("webpack/lib/DefinePlugin")
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-
-
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin') // 命令行提示
+const DefinePlugin = require('webpack/lib/DefinePlugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
   mode: 'development',

@@ -1,15 +1,15 @@
-const path = require('path');
+const path = require('path')
 const webpack = require('webpack')
-const ProgressBarPlugin = require('progress-bar-webpack-plugin');
+const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin') // 生成动态title
 const {CleanWebpackPlugin} = require('clean-webpack-plugin') // 每次打包前清除dist文件,重新生成
-const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin'); // 命令行提示
-const DefinePlugin = require("webpack/lib/DefinePlugin")
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin') // 命令行提示
+const DefinePlugin = require('webpack/lib/DefinePlugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const entries = {
-  main: './src/index.js'
+  main: './src/index.js',
 }
 
 const output = {
@@ -19,12 +19,12 @@ const output = {
   // 打包生成的 index.html 文件里面引用资源的前缀
   // 也为发布到线上资源的 URL 前缀
   // 使用的是相对路径，默认为 ''
-  publicPath: '/'
+  publicPath: '/',
 }
 
 const modules = {
   rules: [
-    // 引入 babel, 进行文件的转换编译,其中包括: js css 静态资源 es6转义为浏览器可编译文件(bable-cro) 
+    // 引入 babel, 进行文件的转换编译,其中包括: js css 静态资源 es6转义为浏览器可编译文件(bable-cro)
     // JavaScript
     {
       test: /\.m?js$/,
@@ -32,7 +32,7 @@ const modules = {
       use: {
         loader: 'babel-loader',
         options: {
-          presets: ['@babel/preset-env', '@babel/preset-react'],
+          presets: [ '@babel/preset-env', '@babel/preset-react' ],
         },
       },
     },
@@ -55,14 +55,16 @@ const modules = {
     // CSS, PostCSS, and Sass
     {
       test: /\.(css)$/,
-      use: ['style-loader',
-      MiniCssExtractPlugin.loader,
-      {
-        loader: 'css-loader',
-        options: {
-          importLoaders: 1,
-        },
-      }, 'postcss-loader'],
+      use: [
+        'style-loader',
+        MiniCssExtractPlugin.loader,
+        {
+          loader: 'css-loader',
+          options: {
+            importLoaders: 1,
+          },
+        }, 'postcss-loader',
+      ],
     },
     {
       test: /\.scss$/,
@@ -71,10 +73,10 @@ const modules = {
         'style-loader',
         MiniCssExtractPlugin.loader,
         'css-loader',
-        'sass-loader'
-      ]
-    }
-  ]
+        'sass-loader',
+      ],
+    },
+  ],
 }
 
 const plugins = [
@@ -85,10 +87,10 @@ const plugins = [
   }),
   new CleanWebpackPlugin(),
   new FriendlyErrorsWebpackPlugin(),
-  new webpack.HotModuleReplacementPlugin(),  // 热更新插件
+  new webpack.HotModuleReplacementPlugin(), // 热更新插件
   new ProgressBarPlugin(),
   new MiniCssExtractPlugin({
-    filename: "css/[name].[hash].css",
+    filename: 'css/[name].[hash].css',
     chunkFilename: 'css/[id].[hash].css',
   }),
   // new DefinePlugin({
@@ -111,7 +113,7 @@ const resolve = {
     '@': path.resolve(__dirname, './src'),
     'config': path.resolve(__dirname, './config'),
   },
-  extensions: [ '.tsx', '.ts', '.js', '.jsx' ]
+  extensions: [ '.tsx', '.ts', '.js', '.jsx' ],
 }
 
 module.exports = {
