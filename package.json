@@ -65,7 +65,6 @@
   "lint-staged": {
     "**/*.{js,ts,tsx}": [
       "eslint --fix --ext .ts,.tsx,.js",
-      "prettier --write",
       "git add"
     ]
   },
