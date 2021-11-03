@@ -6,6 +6,7 @@ const {CleanWebpackPlugin} = require('clean-webpack-plugin') // 每次打包前�
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin'); // 命令行提示
 const DefinePlugin = require("webpack/lib/DefinePlugin")
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const entries = {
   main: './src/index.js'
@@ -54,18 +55,21 @@ const modules = {
     // CSS, PostCSS, and Sass
     {
       test: /\.(css)$/,
-      use: ['style-loader', {
-          loader: 'css-loader',
-          options: {
-            importLoaders: 1,
-          },
-        }, 'postcss-loader'],
+      use: ['style-loader',
+      MiniCssExtractPlugin.loader,
+      {
+        loader: 'css-loader',
+        options: {
+          importLoaders: 1,
+        },
+      }, 'postcss-loader'],
     },
     {
       test: /\.scss$/,
       use: [
         // MiniCssExtractPlugin.loader,
         'style-loader',
+        MiniCssExtractPlugin.loader,
         'css-loader',
         'sass-loader'
       ]
@@ -76,24 +80,28 @@ const modules = {
 const plugins = [
   new HtmlWebpackPlugin({
     title: '写着玩',
-    template: path.resolve(__dirname, '../public/index.html'),
+    template: path.resolve(__dirname, '../src/index.html'),
     filename: 'index.html',
   }),
   new CleanWebpackPlugin(),
   new FriendlyErrorsWebpackPlugin(),
   new webpack.HotModuleReplacementPlugin(),  // 热更新插件
   new ProgressBarPlugin(),
+  new MiniCssExtractPlugin({
+    filename: "css/[name].[hash].css",
+    chunkFilename: 'css/[id].[hash].css',
+  }),
   // new DefinePlugin({
   //   /* eslint-disable no-undef */
   //   SOMETHINE: 'This is something we needed.',
   //   API_URL: JSON.stringify(API_URL)
   // }),
-  new CopyWebpackPlugin({
-    patterns: [{
-      from: path.resolve(__dirname, "../public"), //打包的静态资源目录地址
-      to: path.resolve(__dirname, "../dist/public") //打包到build下面的public
-    }]
-  }),
+  // new CopyWebpackPlugin({
+  //   patterns: [{
+  //     from: path.resolve(__dirname, "../public"), //打包的静态资源目录地址
+  //     to: path.resolve(__dirname, "../dist/public") //打包到build下面的public
+  //   }]
+  // }),
 ]
 
 const optimization = {}
