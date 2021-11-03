@@ -1,4 +1,4 @@
-import Login from './login/index'
+import Login from './login/index';
 
 const ROUTER = [
   {
@@ -6,5 +6,5 @@ const ROUTER = [
     component: Login,
     title: '登录'
   }
-]
-export default ROUTER
+];
+export default ROUTER;
