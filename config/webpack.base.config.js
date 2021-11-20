@@ -75,14 +75,21 @@ const modules = {
       test: /\.scss$/,
       use: [
         // MiniCssExtractPlugin.loader,
-        'style-loader',
         {
           loader: MiniCssExtractPlugin.loader,
           options: {
             esModule: false,
           },
         },
-        'css-loader',
+        'css-modules-typescript-loader',
+        {
+          loader: 'css-loader',
+          options: {
+            importLoaders: 1,
+            modules: true,
+            localIdentName: '[local]---[hash:base64:5]',
+          },
+        },
         'sass-loader',
       ],
     },

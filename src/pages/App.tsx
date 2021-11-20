@@ -5,7 +5,6 @@ import {
   Switch,
   Redirect,
 } from 'react-router-dom'
-import Layout from '../components/Layout'
 import ROUTER from './router'
 import Login from './login/index'
 
@@ -28,12 +27,10 @@ const App: React.FC<any> = () =>
         path='/login'
         component={ Login }
       />
-      <Layout>
-        {/* <Redirect from="/" to="/welcome" exact /> */}
-        {ROUTER.map((route, i) =>
-          <RouteWithSubRoutes key={i} {...route} />
-        )}
-      </Layout>
+      <Redirect from="/" to="/login" exact />
+      {ROUTER.map((route, i) =>
+        <RouteWithSubRoutes key={i} {...route} />
+      )}
     </Switch>
   </Router>
 
