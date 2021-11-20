@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom'
 import ROUTER from './router'
 import Login from './login/index'
+import Register from './register/index'
 
 const RouteWithSubRoutes: React.FC<any> = (route) => {
   return (

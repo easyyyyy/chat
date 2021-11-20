@@ -138,7 +138,7 @@ module.exports = {
     '@typescript-eslint/indent': [ 'error', 2 ],
     indent: 'off',
     // 使用 type 来定义对象['error', 'interface/type']
-    '@typescript-eslint/consistent-type-definitions': [ 'error', 'type' ],
+    '@typescript-eslint/consistent-type-definitions': [ 'off', 'type' ],
     // 接口和类型文字需要特定的成员定界符样式
     '@typescript-eslint/member-delimiter-style': [
       'error', {

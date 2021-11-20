@@ -1,12 +1,18 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 // 由于 antd 组件的默认文案是英文，所以需要修改为中文
-import moment from 'moment'
-import 'moment/locale/zh-cn'
 
 import App from './pages/App'
 // import './index.css';
-moment.locale('zh-cn')
+
+// 计算根节点字体大小
+(function(): void {
+  const html = document.querySelector('html')
+  const width = html?.clientWidth || 375
+  const fontSize = 50 / 375 * width
+  console.log(width)
+  html && (html.style.fontSize = `${fontSize}px`)
+})()
 
 ReactDOM.render(
   <App />,

@@ -2,22 +2,15 @@ import React, { useState, useEffect } from 'react'
 import {
   Form,
   Input,
-  Button,
 } from 'antd-mobile'
 import cssExports from './index.scss'
 
-const Login: React.FC<any> = (props: any) => {
+const Register: React.FC<any> = (props: any) => {
 
   return (
     <div>
-      <div>登录</div>
-      <Form
-        footer={
-          <Button block type='submit' color='primary'>
-            登录
-          </Button>
-        }
-      >
+      <div>注册</div>
+      <Form>
         <Form.Item>
           <Input placeholder='请输入用户名或邮箱' clearable/>
         </Form.Item>
@@ -28,4 +21,4 @@ const Login: React.FC<any> = (props: any) => {
     </div>
   )
 }
-export default Login
+export default Register
