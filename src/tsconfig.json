@@ -4,7 +4,7 @@
     // "rootDir": "./src",
     "sourceMap": true, // 开启sourcemap
     "module": "commonjs",
-    "target": "es5",
+    "target": "es6",
     "jsx": "react",
     "esModuleInterop": true,
     "experimentalDecorators": true,
@@ -15,5 +15,6 @@
 　　　　"@/*": ["src/*"],
     },
     //"plugins": [{ "name": "typescript-plugin-css-modules" }],
-  }
+  },
+  //"extends": "./tsconfig.extend.json"
 }

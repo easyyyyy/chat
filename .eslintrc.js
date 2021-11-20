@@ -217,7 +217,7 @@ module.exports = {
     '@typescript-eslint/comma-spacing': [ 'error', { before: false, after: true } ],
     // 将默认参数放在最后
     'default-param-last': 'off',
-    '@typescript-eslint/default-param-last': [ 'error' ],
+    '@typescript-eslint/default-param-last': [ 'off' ],
     // 要求使用点号, 因为它更加易读，简洁，也更适于 JavaScript 压缩。
     // "dot-notation": "off",
     // "@typescript-eslint/dot-notation": ["error"],

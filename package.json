@@ -4,8 +4,10 @@
   "private": true,
   "scripts": {
     "start": "webpack-dev-server --config ./config/webpack.dev.config.js",
+    "dev": "npm run start",
     "build": "webpack --config ./config/webpack.prod.config.js",
     "lint": "eslint --fix --ext .js,.tsx,.ts,.eslintrc.js src",
+    "lint:config": "eslint --fix --ext .js,.tsx,.ts,.eslintrc.js config",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
