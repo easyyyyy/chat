@@ -141,6 +141,7 @@ const optimization = {}
 const resolve = {
   alias: {
     '@': path.resolve(__dirname, '../src'),
+    '@api': path.resolve(__dirname, '../src/config/api'),
   },
   extensions: [ '.tsx', '.ts', '.js', '.jsx' ],
 }

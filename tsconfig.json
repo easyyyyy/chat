@@ -4,7 +4,7 @@
     // "rootDir": "./src",
     "sourceMap": true, // 开启sourcemap
     "module": "commonjs",
-    "target": "es6",
+    "target": "es5",
     "jsx": "react",
     "esModuleInterop": true,
     "experimentalDecorators": true,
@@ -13,6 +13,7 @@
     "baseUrl": ".",
     "paths": {
 　　　　"@/*": ["src/*"],
+        "@api/*": ["src/config/api/*"],
     },
     //"plugins": [{ "name": "typescript-plugin-css-modules" }],
   },

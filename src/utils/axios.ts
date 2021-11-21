@@ -6,6 +6,7 @@ const instance = axios.create({
     'Content-Type': 'application/json',
     // 'Cookie': cookie,
   },
+  //baseURL: 'http://127.0.0.1:3000',
 })
 
 instance.interceptors.request.use(
