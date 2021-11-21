@@ -1,4 +1,4 @@
-const axios = require('axios')
+import axios, { AxiosResponse, AxiosRequestConfig, AxiosError, Method } from 'axios'
 
 const instance = axios.create({
   withCredentials: true,
@@ -9,20 +9,20 @@ const instance = axios.create({
 })
 
 instance.interceptors.request.use(
-  (config: any) => {
+  (config: AxiosRequestConfig) => {
     return config
   },
-  (error: any) => Promise.reject(error)
+  (error: AxiosError) => Promise.reject(error)
 )
 
 instance.interceptors.response.use(
-  (response: any) => {
+  (response: AxiosResponse) => {
     return response.data
   },
-  (error: any) => Promise.reject(error)
+  (error: AxiosError) => Promise.reject(error)
 )
 
-function request(url: string, method = 'GET', params: any, options: any): Promise<any> {
+function request(url: string, method: Method = 'GET', params: any, options: AxiosRequestConfig): Promise<AxiosResponse> {
   const paramObj = Object.assign({}, params)
   const { queryParams, sendParams } = paramObj
 
