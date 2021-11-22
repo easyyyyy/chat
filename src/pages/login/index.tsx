@@ -29,7 +29,10 @@ const Login: React.FC<any> = (props: any) => {
         queryParams: {},
       }
       const data = await login(params)
-      console.log(data.data)
+      if (data.status === 200) {
+        props.history.push('/main')
+      }
+      console.log(data)
     } catch (e) {
       console.log(e)
     }

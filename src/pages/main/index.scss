@@ -1,0 +1,12 @@
+.layout {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  &__main {
+    flex: 1
+  }
+  &__menu {
+    background: rgba(0, 0, 0, 0.02);
+    height: 1.2rem;
+  }
+}

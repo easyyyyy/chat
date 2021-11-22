@@ -8,8 +8,10 @@ const gnRequest = function(url: string, method: Method, options: AxiosRequestCon
   }
 }
 
-const login = gnRequest('/api/user/signin', 'POST', {})
+const login = gnRequest('/api/auth/signin', 'POST', {})
+const register = gnRequest('/api/auth/register', 'POST', {})
 
 export {
   login,
+  register,
 }

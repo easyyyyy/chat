@@ -3,7 +3,5 @@ declare module '*.scss' {
   export = content
 }
 
-declare module '*.d.ts'
 declare module '*.png'
 declare module '*.jpg'
-// //declare module '*.scss'

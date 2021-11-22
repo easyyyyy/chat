@@ -6,31 +6,14 @@ import {
   Redirect,
 } from 'react-router-dom'
 import ROUTER from './router'
-import Login from './login/index'
-import Register from './register/index'
-
-const RouteWithSubRoutes: React.FC<any> = (route) => {
-  return (
-    <Route
-      path={route.path}
-      render={(props: any): any =>
-        // pass the sub-routes down to keep nesting
-        <route.component {...props} routes={route.routes} />
-      }
-    />
-  )
-}
+import '@/assets/styles/base.css'
 
 const App: React.FC<any> = () =>
   <Router>
     <Switch>
-      <Route
-        path='/login'
-        component={ Login }
-      />
       <Redirect from="/" to="/login" exact />
       {ROUTER.map((route, i) =>
-        <RouteWithSubRoutes key={i} {...route} />
+        <Route key={i} {...route} />
       )}
     </Switch>
   </Router>

@@ -1,4 +1,5 @@
 import axios, { AxiosResponse, AxiosRequestConfig, AxiosError, Method } from 'axios'
+import { RequestParams } from '@/types/api'
 
 const instance = axios.create({
   withCredentials: true,
@@ -23,7 +24,7 @@ instance.interceptors.response.use(
   (error: AxiosError) => Promise.reject(error)
 )
 
-function request(url: string, method: Method = 'GET', params: any, options: AxiosRequestConfig): Promise<AxiosResponse> {
+function request(url: string, method: Method = 'GET', params: RequestParams, options: AxiosRequestConfig): Promise<any> {
   const paramObj = Object.assign({}, params)
   const { queryParams, sendParams } = paramObj
 
